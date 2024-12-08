@@ -1,8 +1,8 @@
 namespace ai_ai
 {
-    public partial class Form1 : Form
+    public partial class Menu : Form
     {
-        public Form1()
+        public Menu()
         {
             InitializeComponent();
 
@@ -10,13 +10,13 @@ namespace ai_ai
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 newForm = new Form3();
+            PlayerVersusComputer newForm = new();
             newForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 newForm = new Form2();
+            PlayerVersusPlayer newForm = new();
             newForm.Show();
         }
 

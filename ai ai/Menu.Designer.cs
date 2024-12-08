@@ -1,6 +1,6 @@
 ﻿namespace ai_ai
 {
-    partial class Form1
+    partial class Menu
     {
         /// <summary>
         ///  Required designer variable.
@@ -37,7 +37,7 @@
             // 
             button1.BackColor = Color.LightSteelBlue;
             button1.Font = new Font("Tempus Sans ITC", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(163, 273);
+            button1.Location = new Point(55, 273);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(197, 85);
@@ -50,7 +50,7 @@
             // 
             button2.BackColor = Color.LightSteelBlue;
             button2.Font = new Font("Tempus Sans ITC", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(578, 273);
+            button2.Location = new Point(493, 273);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(191, 85);
@@ -63,24 +63,24 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tempus Sans ITC", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(336, 75);
+            label1.Location = new Point(255, 108);
             label1.Name = "label1";
             label1.Size = new Size(263, 49);
             label1.TabIndex = 2;
             label1.Text = "TIC-TAC-TOE";
             // 
-            // Form1
+            // Menu
             // 
             AutoScaleDimensions = new SizeF(10F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
-            ClientSize = new Size(917, 434);
+            ClientSize = new Size(801, 434);
             Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(button1);
             Font = new Font("Tempus Sans ITC", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form1";
+            Name = "Menu";
             Text = "tic-tac-toe";
             ResumeLayout(false);
             PerformLayout();
