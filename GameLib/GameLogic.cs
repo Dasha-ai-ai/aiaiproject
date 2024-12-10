@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ai_ai
+﻿namespace GameLib
 {
+    public enum GameStatus
+    {
+        Runnig,
+        Win,
+        Draw
+    }
+
     public class GameLogic
     {
-
         private char[,] board;
-        public int col { get ; private set; }
+        public int col { get; private set; }
         public int row { get; private set; }
         public char currentPlayer { get; private set; }
 
         public char lastMovedPlayer { get; private set; }
 
+        public GameStatus Status { get; private set; }
         public bool gameEndedDraw { get; private set; }
         public bool gameEndedWin { get; private set; }
         public GameLogic()
@@ -24,6 +25,7 @@ namespace ai_ai
             currentPlayer = 'X';
             gameEndedDraw = false;
             gameEndedWin = false;
+            Status = GameStatus.Runnig;
         }
         public void ResetGame()
         {
@@ -36,7 +38,7 @@ namespace ai_ai
         {
             if (board[row, col] != '\0')
             {
-                MessageBox.Show("Это поле уже занято");
+                
                 return false;
             }
 
@@ -46,25 +48,29 @@ namespace ai_ai
             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
             return true;
         }
+
         public void ComputerMove()
         {
-            Random rand = new Random(); 
-            do
+            Random rand = new Random();
+            row = rand.Next(0, 3);
+            col = rand.Next(0, 3);
+            while (board[row, col] == 'X' || board[row, col] == 'O')
             {
-                row = rand.Next(0, 3); // Выбираем случайную строку и столбец
+                row = rand.Next(0, 3);
                 col = rand.Next(0, 3);
-            } while (board[row, col] != 'X' && board[row, col] != 'O'); // Продолжать случайный выбор, пока не выберется пустая клетка
+            }
             board[row, col] = currentPlayer;
             lastMovedPlayer = currentPlayer;
             CheckGameEnd();
             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
         }
+
         private void CheckGameEnd()
         {
             int countOfFullField = 0;
             for (int i = 0; i < 3; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     if (board[i, j] != '\0') countOfFullField++;
                 }
@@ -80,8 +86,7 @@ namespace ai_ai
             if (countOfFullField == 9 && gameEndedWin == false) gameEndedDraw = true;
 
         }
-        
+
 
     }
-
 }

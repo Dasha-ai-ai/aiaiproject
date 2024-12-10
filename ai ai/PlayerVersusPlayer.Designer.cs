@@ -110,20 +110,22 @@
             // 
             // button0_1
             // 
+            button0_1.BackColor = SystemColors.ButtonHighlight;
             button0_1.Location = new Point(89, 42);
             button0_1.Name = "button0_1";
             button0_1.Size = new Size(53, 43);
             button0_1.TabIndex = 10;
-            button0_1.UseVisualStyleBackColor = true;
+            button0_1.UseVisualStyleBackColor = false;
             button0_1.Click += button0_1_Click;
             // 
             // button0_0
             // 
+            button0_0.BackColor = SystemColors.ButtonHighlight;
             button0_0.Location = new Point(8, 42);
             button0_0.Name = "button0_0";
             button0_0.Size = new Size(53, 43);
             button0_0.TabIndex = 9;
-            button0_0.UseVisualStyleBackColor = true;
+            button0_0.UseVisualStyleBackColor = false;
             button0_0.Click += button0_0_Click;
             // 
             // menuStrip1
@@ -169,6 +171,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Thistle;
             ClientSize = new Size(229, 241);
             Controls.Add(labelCurrentPlayer);
             Controls.Add(button2_2);

@@ -47,11 +47,12 @@
             // 
             // button0_0
             // 
+            button0_0.BackColor = SystemColors.ButtonHighlight;
             button0_0.Location = new Point(11, 46);
             button0_0.Name = "button0_0";
             button0_0.Size = new Size(53, 43);
             button0_0.TabIndex = 0;
-            button0_0.UseVisualStyleBackColor = true;
+            button0_0.UseVisualStyleBackColor = false;
             button0_0.Click += button0_0_Click;
             // 
             // button0_1
@@ -169,6 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Thistle;
             ClientSize = new Size(238, 251);
             Controls.Add(labelCurrentPlayer);
             Controls.Add(button2_2);
