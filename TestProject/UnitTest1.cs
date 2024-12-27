@@ -15,7 +15,7 @@ namespace TestProject
         }
 
         [Test]
-        public void NewGame_StartWithEmptyBoardAndPlayerX()
+        public void NewGame_EmptyBoard()
         {
             ClassicAssert.AreEqual('X', _gameLogic.currentPlayer, "Начальным игроком должен быть 'X'.");
             ClassicAssert.AreEqual(GameStatus.Running, _gameLogic.Status, "Статус игры должен быть 'в процессе' в начале.");
@@ -30,7 +30,7 @@ namespace TestProject
         }
 
         [Test]
-        public void PlayerMove_ShouldNotAllowMoveOnOccupiedCell()
+        public void PlayerMove_NotAllowMove()
         {
             _gameLogic.PlayerMove(0, 0);
             bool moveResult = _gameLogic.PlayerMove(0, 0);
@@ -38,7 +38,7 @@ namespace TestProject
         }
 
         [Test]
-        public void PlayerMove_ShouldSwitchPlayerAfterValidMove()
+        public void PlayerMove_SwitchPlayer()
         {
             _gameLogic.PlayerMove(0, 0);
             ClassicAssert.AreEqual('O', _gameLogic.currentPlayer, "Текущий игрок должен переключиться на 'O'.");
