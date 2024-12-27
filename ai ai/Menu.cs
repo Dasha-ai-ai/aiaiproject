@@ -10,8 +10,11 @@ namespace ai_ai
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PlayerVersusComputer newForm = new();
-            newForm.Show();
+           
+            {
+                PlayerVersusComputer newForm = new();
+                newForm.Show();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -20,5 +23,10 @@ namespace ai_ai
             newForm.Show();
         }
 
+        private void Reg_Click(object sender, EventArgs e)
+        {
+            Form1 regForm = new Form1();
+            regForm.ShowDialog();
+        }
     }
 }

@@ -14,26 +14,35 @@ namespace ai_ai
     public partial class PlayerVersusPlayer : Form
     {
         private GameLogic gameLogic = new GameLogic();
+        Button[,] buttons = new Button[3, 3];
         public PlayerVersusPlayer()
         {
             InitializeComponent();
+            buttons[0, 0] = button0_0;
+            buttons[0, 1] = button0_1;
+            buttons[0, 2] = button0_2;
+            buttons[1, 0] = button1_0;
+            buttons[1, 1] = button1_1;
+            buttons[1, 2] = button1_2;
+            buttons[2, 0] = button2_0;
+            buttons[2, 1] = button2_1;
+            buttons[2, 2] = button2_2;
             labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
         }
-
-        private void button0_0_Click(object sender, EventArgs e)
+        private void MakeTurn(int i, int j)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
+            if (gameLogic.Status == GameStatus.Running)
             {
-                if (gameLogic.PlayerMove(0, 0))
+                if (gameLogic.PlayerMove(i, j))
                 {
-                    button0_0.Text = gameLogic.lastMovedPlayer.ToString();
+                    buttons[i,j].Text = gameLogic.lastMovedPlayer.ToString();
                     labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
+                    if (gameLogic.Status == GameStatus.Win)
                     {
                         MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
                         labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
                     }
-                    if (gameLogic.gameEndedDraw)
+                    if (gameLogic.Status == GameStatus.Draw)
                     {
                         MessageBox.Show("Игра закончилась ничьей");
                         labelCurrentPlayer.Text = "Ничья";
@@ -44,214 +53,50 @@ namespace ai_ai
             {
                 MessageBox.Show("Игра завершена!");
             }
+        }
+        private void button0_0_Click(object sender, EventArgs e)
+        {
+            MakeTurn(0, 0);
         }
 
         private void button0_1_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(0, 1))
-                {
-                    button0_1.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(0, 1);
         }
 
         private void button0_2_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(0, 2))
-                {
-                    button0_2.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(0, 2);
         }
 
         private void button1_0_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(1, 0))
-                {
-                    button1_0.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(1, 0);
         }
 
         private void button1_1_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(1, 1))
-                {
-                    button1_1.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(1, 1);
         }
 
         private void button1_2_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(1, 2))
-                {
-                    button1_2.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(1, 2);
         }
 
         private void button2_0_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(2, 0))
-                {
-                    button2_0.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(2, 0);
         }
 
         private void button2_1_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(2, 1))
-                {
-                    button2_1.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(2, 1);
         }
 
         private void button2_2_Click(object sender, EventArgs e)
         {
-            if (!(gameLogic.gameEndedDraw || gameLogic.gameEndedWin))
-            {
-                if (gameLogic.PlayerMove(2, 2))
-                {
-                    button2_2.Text = gameLogic.lastMovedPlayer.ToString();
-                    labelCurrentPlayer.Text = "Ход игрока " + gameLogic.currentPlayer;
-                    if (gameLogic.gameEndedWin)
-                    {
-                        MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
-                        labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
-                    }
-                    if (gameLogic.gameEndedDraw)
-                    {
-                        MessageBox.Show("Игра закончилась ничьей");
-                        labelCurrentPlayer.Text = "Ничья";
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Игра завершена!");
-            }
+            MakeTurn(2, 2);
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)

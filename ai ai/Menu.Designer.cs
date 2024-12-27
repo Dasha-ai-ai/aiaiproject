@@ -31,6 +31,8 @@
             button1 = new Button();
             button2 = new Button();
             label1 = new Label();
+            Reg = new Button();
+            Log = new Button();
             SuspendLayout();
             // 
             // button1
@@ -69,12 +71,33 @@
             label1.TabIndex = 2;
             label1.Text = "TIC-TAC-TOE";
             // 
+            // Reg
+            // 
+            Reg.Location = new Point(0, 2);
+            Reg.Name = "Reg";
+            Reg.Size = new Size(49, 36);
+            Reg.TabIndex = 3;
+            Reg.Text = "Reg";
+            Reg.UseVisualStyleBackColor = true;
+            Reg.Click += Reg_Click;
+            // 
+            // Log
+            // 
+            Log.Location = new Point(55, 2);
+            Log.Name = "Log";
+            Log.Size = new Size(47, 36);
+            Log.TabIndex = 4;
+            Log.Text = "Log";
+            Log.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(10F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
             ClientSize = new Size(801, 434);
+            Controls.Add(Log);
+            Controls.Add(Reg);
             Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -91,5 +114,7 @@
         private Button button1;
         private Button button2;
         private Label label1;
+        private Button Reg;
+        private Button Log;
     }
 }

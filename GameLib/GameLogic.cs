@@ -2,11 +2,10 @@
 {
     public enum GameStatus
     {
-        Runnig,
+        Running,
         Win,
         Draw
     }
-
     public class GameLogic
     {
         private char[,] board;
@@ -19,13 +18,12 @@
         public GameStatus Status { get; private set; }
         public bool gameEndedDraw { get; private set; }
         public bool gameEndedWin { get; private set; }
+
         public GameLogic()
         {
             board = new char[3, 3];
             currentPlayer = 'X';
-            gameEndedDraw = false;
-            gameEndedWin = false;
-            Status = GameStatus.Runnig;
+            Status = GameStatus.Running;
         }
         public void ResetGame()
         {
@@ -79,13 +77,14 @@
                     (board[0, 0] == currentPlayer && board[1, 1] == currentPlayer && board[2, 2] == currentPlayer) ||
                      (board[0, 2] == currentPlayer && board[1, 1] == currentPlayer && board[2, 0] == currentPlayer))
                 {
-                    gameEndedWin = true;
+                    Status = GameStatus.Win;
                     break;
                 }
             }
-            if (countOfFullField == 9 && gameEndedWin == false) gameEndedDraw = true;
+            if (countOfFullField == 9 && Status!= GameStatus.Win) Status = GameStatus.Draw;
 
         }
+
 
 
     }

@@ -33,7 +33,7 @@ namespace ai_ai
         }
         private void MakeTurn(int i, int j)
         {
-            if (gameLogic.gameEndedDraw || gameLogic.gameEndedWin)
+            if (gameLogic.Status != GameStatus.Running)
             {
                 MessageBox.Show("Игра завершена!");
                 return;
@@ -43,12 +43,12 @@ namespace ai_ai
             {
                 buttons[i, j].Text = gameLogic.lastMovedPlayer.ToString();
                 labelCurrentPlayer.Text = "Ход компьютера: " + gameLogic.currentPlayer;
-                if (gameLogic.gameEndedWin)
+                if (gameLogic.Status == GameStatus.Win)
                 {
                     MessageBox.Show($"Игрок {gameLogic.lastMovedPlayer} победил!");
                     labelCurrentPlayer.Text = $"Победа {gameLogic.lastMovedPlayer}";
                 }
-                else if (gameLogic.gameEndedDraw)
+                else if (gameLogic.Status == GameStatus.Draw)
                 {
                     MessageBox.Show("Игра закончилась ничьей");
                     labelCurrentPlayer.Text = "Ничья";
